@@ -27,3 +27,5 @@
 - Include a **Sort button** with toggle functionality:
   - Clicking it switches between **ascending** and **descending** order
   - The list should **update accordingly**
+
+## 4. Use Local Storage
