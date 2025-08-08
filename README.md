@@ -8,7 +8,6 @@
 
 ### Counter Functionality
 
-
 - Display a number initialized to **0**
 - Include a **“+” button** to increment the number
 - Include a **“-” button** to decrement the number  
@@ -29,3 +28,5 @@
   - The list should **update accordingly**
 
 ## 4. Use Local Storage
+
+- Persist using local Storage

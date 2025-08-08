@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import List from './List';
 
 interface NumberItem {
@@ -11,6 +11,19 @@ const Counter: React.FC = () => {
     const [count, setCount] = useState<number>(0);
     const [numbers, setNumbers] = useState<NumberItem[]>([]);
     const [sortDesc, setSortDesc] = useState<boolean>(true)
+
+       // Load from localStorage on first render
+    useEffect(() => {
+        const savedNumbers = localStorage.getItem('numbers');
+        if (savedNumbers) {
+            setNumbers(JSON.parse(savedNumbers));
+        }
+    }, []);
+
+    // Save to localStorage whenever numbers changes
+    useEffect(() => {
+        localStorage.setItem('numbers', JSON.stringify(numbers));
+    }, [numbers]);
 
     const handleIncrementCounter = () => {
         setCount(prev => prev + 1);
