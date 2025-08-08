@@ -1,6 +1,6 @@
 # Counter and List Management Functionality
 
-- It is a part of Raiqa Health
+- It is a part of Raiqa Health Assignment. Implement all features given in the assignement
 
 - A simple React Application that allows users to increment/ decrement a counter, add Values to a list and sort the list in ascending or descending order
 

@@ -44,6 +44,7 @@ const Counter: React.FC = () => {
             value: count
         };
         setNumbers(prev => [...prev, newItem]);
+        setCount(0);
     }
 
     const handleReset = () => {
