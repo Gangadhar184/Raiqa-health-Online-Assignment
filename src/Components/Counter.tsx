@@ -1,15 +1,46 @@
 import  { useState } from 'react'
 import List from './List';
 
+interface NumberItem {
+    id: string;
+    value: number;
+}
+
 const Counter: React.FC = () => {
 
     const[count, setCount] = useState<number>(0);
+    const [numbers, setNumbers] = useState<NumberItem[]>([]);
+    const [sortDesc, setSortDesc] = useState<boolean>(true)
 
     const handleIncrementCounter = () => {
         setCount(prev => prev + 1);
     }
+
     const handleDecrementCounter = () => {
         setCount(prev => (prev > 0 ? prev - 1 : prev));
+    }
+
+    const handleAddToList = () => {
+        const newItem: NumberItem = {
+            id: crypto.randomUUID(),
+            value: count
+        };
+        setNumbers(prev => [...prev, newItem]);
+    }
+
+    const handleReset = () => {
+        setNumbers([]);
+    }
+
+    const handleSort = () => {
+        setNumbers(prev => (
+            [...prev].sort((a,b) => sortDesc ? b.value - a.value : a.value - b.value)
+        ));
+        setSortDesc(prev => !prev);
+    }
+    
+    const handleRemove = (id: string) => {
+        setNumbers(prev => prev.filter(item => item.id !== id));
     }
   
 
@@ -40,12 +71,12 @@ return (
       </button>
     </div>
     <button
-    
+    onClick={handleAddToList}
     className="mt-6 w-full bg-blue-500 text-white text-sm sm:text-base font-medium py-2 sm:py-3 rounded-md  cursor-pointer">
       Add to List
     </button>
   </div>
-  <List />
+  <List numbers={numbers} onReset={handleReset} onSort={handleSort} sortDesc={sortDesc} onRemove={handleRemove} />
   </>
 
 
