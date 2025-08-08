@@ -1,11 +1,13 @@
-
-
+import Counter from "./Components/Counter";
 
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <h1>Counter & List App</h1>
+      <Counter/>
+    </div>
   )
 }
 
-export default App
+export default App;
